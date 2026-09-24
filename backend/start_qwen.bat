@@ -1,0 +1,3 @@
+@echo off
+set "PATH=C:\Users\VIJAY\.lmstudio\extensions\backends\vendor\win-llama-cuda12-vendor-v2;C:\Users\VIJAY\.lmstudio\extensions\backends\llama.cpp-win-x86_64-nvidia-cuda12-avx2-2.44.0;%PATH%"
+"C:\Users\VIJAY\.lmstudio\extensions\backends\llama.cpp-win-x86_64-nvidia-cuda12-avx2-2.44.0\llama-server.exe" -m "C:\Users\VIJAY\.lmstudio\models\lmstudio-community\Qwen2.5-VL-3B-Instruct-GGUF\Qwen2.5-VL-3B-Instruct-Q4_K_M.gguf" --mmproj "C:\Users\VIJAY\.lmstudio\models\lmstudio-community\Qwen2.5-VL-3B-Instruct-GGUF\mmproj-model-f16.gguf" --host 127.0.0.1 --port 1234 -ngl 99 -c 4096 --alias "qwen2.5-vl-3b-instruct@q4_k_m"
