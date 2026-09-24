@@ -22,27 +22,23 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
 
       - name: 📦 Install Frontend Dependencies
-        run: npm ci --legacy-peer-deps || npm install
+        working-directory: ./frontend
+        run: npm install
 
       - name: 📐 Run TypeScript & Code Linting
+        working-directory: ./frontend
         run: |
           npm run lint --if-present
           npx tsc --noEmit
 
-      - name: 🏗️ Build Production Bundle (Nitro Node Server)
+      - name: 🏗️ Build Production Bundle
+        working-directory: ./frontend
         run: npm run build
         env:
           NODE_ENV: production
           VITE_API_BASE_URL: http://localhost:8000
-
-      - name: 📤 Upload Frontend Artifact (Optional Debugging)
-        uses: actions/upload-artifact@v4
-        with:
-          name: nitro-server-output
-          path: .output
           retention-days: 3
 
   backend-ci:
